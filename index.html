@@ -1,0 +1,595 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSV Untertürkheim – Sportschützenverein Stuttgart-Untertürkheim e.V.</title>
+<meta name="description" content="Sportschützenverein Stuttgart-Untertürkheim e.V. — gegründet 1930. Bogenschießen, Luftdruck, Kleinkaliber, Großkaliber, Vorderlader. Jugendarbeit, Mitgliedschaft, Öffnungszeiten und Kontakt.">
+<style>
+  :root{
+    color-scheme: light;
+    --green-dark:#122a1c;
+    --green:#1f4d33;
+    --green-soft:#2e6646;
+    --gold:#c8a24a;
+    --gold-light:#e9d9ab;
+    --cream:#f8f4ea;
+    --cream-2:#f1e9d6;
+    --ink:#1c1c18;
+    --muted:#5c6058;
+    --line:#e2d8bf;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  .ssv-root{background:var(--cream);color:var(--ink);line-height:1.6;}
+  .ssv-root h1,.ssv-root h2,.ssv-root h3,.ssv-root h4{
+    font-family:Georgia,"Times New Roman",serif;
+    color:var(--green-dark);
+    line-height:1.2;
+    margin:0 0 .5em;
+  }
+  .ssv-root p{margin:0 0 1em;color:var(--ink);}
+  .ssv-root a{color:var(--green);}
+  .ssv-section{padding:72px 24px;max-width:1120px;margin:0 auto;}
+  .ssv-section.tight{padding-top:48px;padding-bottom:48px;}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;
+    color:var(--gold);font-weight:700;margin-bottom:10px;display:block;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:3px;font-weight:700;font-size:14.5px;
+    text-decoration:none;cursor:pointer;border:2px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-gold{background:var(--gold);color:var(--green-dark);}
+  .btn-gold:hover{box-shadow:0 10px 24px rgba(200,162,74,.35);}
+  .btn-outline{border-color:rgba(255,255,255,.65);color:#fff;background:transparent;}
+  .btn-outline:hover{background:rgba(255,255,255,.12);}
+  .btn-outline-dark{border-color:var(--green);color:var(--green-dark);background:transparent;}
+  .btn-outline-dark:hover{background:var(--green);color:#fff;}
+
+  /* NAV */
+  .ssv-nav{
+    position:sticky;top:0;z-index:50;background:rgba(18,42,28,.96);
+    backdrop-filter:blur(6px);border-bottom:1px solid rgba(200,162,74,.25);
+  }
+  .ssv-nav-inner{
+    max-width:1200px;margin:0 auto;display:flex;align-items:center;
+    justify-content:space-between;padding:12px 22px;
+  }
+  .ssv-brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;}
+  .ssv-brand .crest{
+    width:38px;height:38px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .ssv-brand strong{font-family:Georgia,serif;font-size:17px;letter-spacing:.02em;display:block;}
+  .ssv-brand span{font-size:11px;color:var(--gold-light);text-transform:uppercase;letter-spacing:.12em;}
+  .ssv-links{display:flex;gap:26px;list-style:none;margin:0;padding:0;}
+  .ssv-links a{
+    color:#eee5cf;text-decoration:none;font-size:14px;font-weight:600;
+    letter-spacing:.02em;padding:6px 2px;border-bottom:2px solid transparent;
+  }
+  .ssv-links a:hover{border-color:var(--gold);color:#fff;}
+  .ssv-nav .btn-gold{padding:9px 18px;font-size:13.5px;}
+  .ssv-burger{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
+  @media (max-width:860px){
+    .ssv-links{
+      position:absolute;top:100%;left:0;right:0;background:var(--green-dark);
+      flex-direction:column;gap:0;padding:8px 22px 18px;display:none;
+      border-bottom:1px solid rgba(200,162,74,.25);
+    }
+    .ssv-links.open{display:flex;}
+    .ssv-links a{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+    .ssv-nav .btn-gold.nav-cta{display:none;}
+    .ssv-burger{display:block;}
+  }
+
+  /* HERO */
+  .ssv-hero{
+    position:relative;color:#fff;overflow:hidden;
+    background:
+      linear-gradient(135deg, rgba(10,26,17,.86), rgba(18,42,28,.78)),
+      url('https://static.wixstatic.com/media/9eda5f_6150a878f0914aa889f419b780b6a181~mv2.jpg/v1/fill/w_1200,h_800,al_c,q_85/He_8891.jpg') center/cover;
+  }
+  .ssv-hero-inner{max-width:1120px;margin:0 auto;padding:120px 24px 100px;}
+  .ssv-hero h1{color:#fff;font-size:clamp(34px,5vw,56px);max-width:760px;}
+  .ssv-hero .lead{font-size:18px;color:#e9e4d3;max-width:560px;margin-bottom:34px;}
+  .ssv-hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .ssv-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid rgba(255,255,255,.18);margin-top:56px;
+  }
+  .ssv-stats div{padding:22px 10px 0;text-align:center;border-left:1px solid rgba(255,255,255,.14);}
+  .ssv-stats div:first-child{border-left:none;}
+  .ssv-stats b{display:block;font-family:Georgia,serif;font-size:30px;color:var(--gold-light);}
+  .ssv-stats span{font-size:12.5px;color:#d6d0bd;text-transform:uppercase;letter-spacing:.08em;}
+  @media (max-width:700px){.ssv-stats{grid-template-columns:repeat(2,1fr);row-gap:20px;}}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center;}
+  .about-grid img{width:100%;border-radius:4px;box-shadow:0 18px 40px rgba(18,42,28,.18);}
+  .quote-box{
+    margin-top:22px;padding:18px 20px;background:var(--cream-2);
+    border-left:4px solid var(--gold);border-radius:2px;font-style:italic;color:var(--green-dark);
+  }
+  @media (max-width:820px){.about-grid{grid-template-columns:1fr;}}
+
+  /* SECTION HEADERS */
+  .sec-head{max-width:640px;margin-bottom:40px;}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+
+  /* DISCIPLINES */
+  .ssv-band{background:var(--green-dark);color:#fff;}
+  .ssv-band .eyebrow{color:var(--gold-light);}
+  .ssv-band h2{color:#fff;}
+  .disc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .disc-card{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+    border-radius:6px;padding:24px 20px;transition:background .2s ease, transform .2s ease;
+  }
+  .disc-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px);}
+  .disc-card .ic{
+    width:42px;height:42px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  }
+  .disc-card h4{color:#fff;font-family:Georgia,serif;font-size:18px;margin-bottom:6px;}
+  .disc-card p{color:#cfd3c9;font-size:14px;margin:0;}
+  @media (max-width:900px){.disc-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.disc-grid{grid-template-columns:1fr;}}
+
+  /* JUGEND */
+  .jugend-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start;}
+  .jugend-grid img{width:100%;border-radius:4px;}
+  .fact-list{list-style:none;margin:0;padding:0;}
+  .fact-list li{
+    display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px;
+  }
+  .fact-list li:last-child{border-bottom:none;}
+  .fact-list b{color:var(--green-dark);}
+  @media (max-width:820px){.jugend-grid{grid-template-columns:1fr;}}
+
+  /* PRICING */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:48px;}
+  .price-card{
+    background:#fff;border:1px solid var(--line);border-radius:8px;padding:28px 24px;
+    text-align:center;position:relative;
+  }
+  .price-card.hi{border-color:var(--gold);box-shadow:0 14px 34px rgba(200,162,74,.18);}
+  .price-card .tag{
+    position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+    background:var(--gold);color:var(--green-dark);font-size:11px;font-weight:800;
+    letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;
+  }
+  .price-card .amt{font-family:Georgia,serif;font-size:36px;color:var(--green-dark);margin:6px 0 2px;}
+  .price-card .amt span{font-size:14px;color:var(--muted);font-family:-apple-system,sans-serif;}
+  .price-card .lbl{font-size:13.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+  @media (max-width:820px){.price-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.price-grid{grid-template-columns:1fr;}}
+
+  .guest-table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+  .guest-table th,.guest-table td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);font-size:14.5px;}
+  .guest-table th{background:var(--cream-2);color:var(--green-dark);text-transform:uppercase;font-size:12px;letter-spacing:.06em;}
+  .guest-table tr:last-child td{border-bottom:none;}
+  .guest-table td:last-child{text-align:right;font-weight:700;color:var(--green-dark);white-space:nowrap;}
+
+  /* CONTACT */
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;}
+  .contact-info b{color:var(--green-dark);}
+  .hours-table{width:100%;border-collapse:collapse;margin:18px 0 26px;}
+  .hours-table td{padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
+  .hours-table td:last-child{text-align:right;font-weight:700;color:var(--green-dark);}
+  .info-line{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:14.5px;}
+  .info-line .dot{color:var(--gold);font-weight:900;}
+  .form-field{margin-bottom:16px;}
+  .form-field label{display:block;font-size:12.5px;font-weight:700;color:var(--green-dark);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
+  .form-field input,.form-field select,.form-field textarea{
+    width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:4px;font-size:14.5px;
+    font-family:inherit;background:#fff;color:var(--ink);
+  }
+  .form-field textarea{resize:vertical;min-height:100px;}
+  @media (max-width:820px){.contact-wrap{grid-template-columns:1fr;}}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:20px 4px;font-family:Georgia,serif;font-size:17px;color:var(--green-dark);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .faq-q .plus{font-size:22px;color:var(--gold);transition:transform .2s ease;flex:none;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;padding:0 4px;}
+  .faq-a p{color:var(--muted);font-size:14.5px;}
+  .faq-item.open .faq-a{max-height:400px;padding-bottom:18px;}
+
+  /* GALLERY */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .gal-grid img{width:100%;height:150px;object-fit:cover;border-radius:4px;}
+  @media (max-width:820px){.gal-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* FOOTER */
+  .ssv-footer{background:var(--green-dark);color:#cfd3c9;}
+  .footer-grid{
+    max-width:1120px;margin:0 auto;padding:56px 24px 28px;
+    display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;
+  }
+  .footer-grid h5{color:#fff;font-family:Georgia,serif;font-size:15px;margin-bottom:14px;letter-spacing:.02em;}
+  .footer-grid ul{list-style:none;margin:0;padding:0;}
+  .footer-grid li{margin-bottom:9px;font-size:13.5px;}
+  .footer-grid a{color:#cfd3c9;text-decoration:none;}
+  .footer-grid a:hover{color:var(--gold-light);}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.12);padding:18px 24px;text-align:center;
+    font-size:12.5px;color:#9aa096;
+  }
+  @media (max-width:860px){.footer-grid{grid-template-columns:1fr 1fr;}}
+
+  .fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .fade-in.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+<div class="ssv-root">
+
+  <!-- NAV -->
+  <nav class="ssv-nav">
+    <div class="ssv-nav-inner">
+      <a href="#top" class="ssv-brand">
+        <span class="crest">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#122a1c" stroke-width="2"/><circle cx="12" cy="12" r="5.5" stroke="#122a1c" stroke-width="2"/><circle cx="12" cy="12" r="1.6" fill="#122a1c"/></svg>
+        </span>
+        <span>
+          <strong>SSV Untertürkheim</strong>
+          <span>Sportschützenverein · seit 1930</span>
+        </span>
+      </a>
+      <ul class="ssv-links" id="ssvLinks">
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#sport">Schießsport</a></li>
+        <li><a href="#jugend">Jugend</a></li>
+        <li><a href="#preise">Preise</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#kontakt" class="btn btn-gold nav-cta">Mitglied werden</a>
+      <button class="ssv-burger" id="ssvBurger" aria-label="Menü">☰</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="ssv-hero" id="top">
+    <div class="ssv-hero-inner">
+      <span class="eyebrow" style="color:var(--gold-light)">Dietbachstraße 38 · Stuttgart-Untertürkheim</span>
+      <h1>Präzision, Tradition und Gemeinschaft seit 1930.</h1>
+      <p class="lead">Der Sportschützenverein Stuttgart-Untertürkheim e.V. ist Heimat für Bogen-, Luftdruck-, Kleinkaliber- und Großkaliberschützen jeden Alters – mitten in malerischem Freigelände am Neckar.</p>
+      <div class="ssv-hero-actions">
+        <a href="#kontakt" class="btn btn-gold">Jetzt Mitglied werden</a>
+        <a href="#sport" class="btn btn-outline">Schießsport entdecken</a>
+      </div>
+      <div class="ssv-stats">
+        <div><b>1930</b><span>Gegründet</span></div>
+        <div><b>7</b><span>Disziplinen</span></div>
+        <div><b>11</b><span>Stände 10m-Bahn</span></div>
+        <div><b>25/50m</b><span>Raumschießanlagen</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="ssv-section" id="about">
+    <div class="about-grid fade-in">
+      <div>
+        <span class="eyebrow">Unsere Geschichte</span>
+        <h2>Fast ein Jahrhundert Schießsport in Untertürkheim</h2>
+        <p>Der Sportschützenverein Stuttgart-Untertürkheim e.V. wurde 1930 gegründet und – nach dem alliierten Verbot aller Schützenvereine nach dem Zweiten Weltkrieg – 1954 unter seinem heutigen Namen neu gegründet. Seit 1934 ist der Verein in der Dietbachstraße ansässig.</p>
+        <p>Nach zahlreichen An- und Umbaumaßnahmen verfügen wir heute über einen Luftpistolen-/Luftgewehrstand (10m) mit elf Ständen, zwei Raumschießanlagen (25m und 50m) mit je fünf Ständen sowie einen Bogenstand mit bis zu 25m im malerischen Freigelände. Geschossen werden können Kurz- und Langwaffen mit Schwarz- und Nitropulver.</p>
+        <div class="quote-box">
+          „Ein kameradschaftlicher, freundschaftlicher Umgang und die tatkräftige Unterstützung durch unsere Mitglieder sind uns wichtig – die Grundlage für erfolgreiche Jugendarbeit und gute sportliche Ergebnisse.“
+        </div>
+        <div style="margin-top:24px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="https://www.xn--schtzenverein-untertrkheim-0zcr.de/_files/ugd/9eda5f_232742c86b1a4f05adb4255eed645797.pdf" class="btn btn-outline-dark" target="_blank" rel="noopener">Satzung &amp; Ordnung (PDF)</a>
+        </div>
+      </div>
+      <img src="https://static.wixstatic.com/media/9eda5f_0d8e04a663f7426fb5b53082ba401cff~mv2.jpg/v1/fill/w_700,h_860,al_c,q_85/Vereinsheim_(4)_JPG.jpg" alt="Vereinsheim SSV Untertürkheim" loading="lazy">
+    </div>
+  </section>
+
+  <!-- DISCIPLINES -->
+  <section class="ssv-band" id="sport">
+    <div class="ssv-section">
+      <div class="sec-head center fade-in" style="margin-left:auto;margin-right:auto;">
+        <span class="eyebrow">Disziplinen</span>
+        <h2>Ein breites Spektrum des Schießsports</h2>
+        <p style="color:#cfd3c9;">Entfernungen von 10 bis 50 Metern, Recurve- oder Blankbogen, Luftdruck, Klein- oder Großkaliber, Schwarzpulver – entdecke, was zu dir passt.</p>
+      </div>
+      <div class="disc-grid fade-in">
+        <div class="disc-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12c4-6 12-6 16 0" stroke="#122a1c" stroke-width="2" stroke-linecap="round"/><path d="M4 12c4 6 12 6 16 0" stroke="#122a1c" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h4>Bogenschießen</h4>
+          <p>Schießsport auf historischem Terrain – im Sommer im Freigelände, im Winter in der Halle.</p>
+        </div>
+        <div class="disc-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#122a1c" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="#122a1c" stroke-width="2"/></svg></div>
+          <h4>Luftdruck</h4>
+          <p>Luftpistole &amp; Luftgewehr – die Grundlage jeder Schützenausbildung bei uns.</p>
+        </div>
+        <div class="disc-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M9 5h10v10" stroke="#122a1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Kleinkaliber</h4>
+          <p>Schießen mit „scharfen“ Sportwaffen, nach solidem Fundament im Luftdruckbereich.</p>
+        </div>
+        <div class="disc-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="#122a1c" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h4>Großkaliber</h4>
+          <p>Erwartungen übertreffen – bis 7.000 Joule (Langwaffe) bzw. 2.500 Joule (Kurzwaffe).</p>
+        </div>
+        <div class="disc-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="#122a1c" stroke-width="2"/></svg></div>
+          <h4>Vorderlader</h4>
+          <p>Qualität im Fokus – historisches Schießen mit Schwarzpulverwaffen.</p>
+        </div>
+        <div class="disc-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 12l5-5M3 12l5 5" stroke="#122a1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Auflageschießen</h4>
+          <p>Zufriedenheit garantiert – Schießsport, der ein Leben lang möglich bleibt.</p>
+        </div>
+        <div class="disc-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#122a1c" stroke-width="2"/><circle cx="12" cy="12" r="1.5" fill="#122a1c"/></svg></div>
+          <h4>Scheibenschießen</h4>
+          <p>Nach Tradition – klassisches Zielschießen für alle Leistungsstufen.</p>
+        </div>
+        <div class="disc-card" style="display:flex;flex-direction:column;justify-content:center;background:rgba(200,162,74,.12);border-color:var(--gold);">
+          <h4 style="margin-bottom:10px;">Neugierig geworden?</h4>
+          <a href="#kontakt" class="btn btn-gold" style="width:fit-content;">Probetraining anfragen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JUGEND -->
+  <section class="ssv-section" id="jugend">
+    <div class="sec-head fade-in">
+      <span class="eyebrow">Schützenjugend</span>
+      <h2>Konzentration, Disziplin und Gemeinschaft für junge Schützinnen und Schützen</h2>
+    </div>
+    <div class="jugend-grid fade-in">
+      <div>
+        <p>Sportschießen schult die Konzentrationsfähigkeit und fördert das Durchhaltevermögen – es ist eine Sportart mit ganzheitlichem Bildungskonzept. Unser Jugendleiter Marco Mayer begleitet die Schützenjugend mit einer nach DOSB-Vorgaben ausgebildeten Lizenz (Stufe C, 120 Lerneinheiten).</p>
+        <div class="quote-box">
+          „Nicht jedes Kind ist immer willig, sich auf intensives Training einzulassen. Doch die Freude und der Stolz über ein gelungenes Trefferbild zeigen uns, dass wir auf dem richtigen Weg sind.“ — Marco Mayer, Jugendleiter
+        </div>
+        <ul class="fact-list" style="margin-top:20px;">
+          <li><b style="min-width:150px;">Trainingszeit:</b> Mittwochs 17:00–18:30 Uhr (17:00 Bogen, ab 17:45 Luftdruck)</li>
+          <li><b style="min-width:150px;">Einstiegsalter:</b> Bogen ab ca. 6–7 Jahren; Luftdruck je nach Haltekraft</li>
+          <li><b style="min-width:150px;">Voraussetzung:</b> Elterneinverständnis beider Elternteile bei unter 18-Jährigen</li>
+          <li><b style="min-width:150px;">Schutzkonzept:</b> Verbindliche SSV-Richtlinien gemäß §72a Bundeskinderschutzgesetz</li>
+        </ul>
+        <div style="margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="https://www.xn--schtzenverein-untertrkheim-0zcr.de/_files/ugd/9eda5f_0f3b4f24440d4e64979a723f2989c282.pdf" class="btn btn-outline-dark" target="_blank" rel="noopener">Elterneinverständnis (PDF)</a>
+          <a href="https://www.xn--schtzenverein-untertrkheim-0zcr.de/_files/ugd/9eda5f_31cc0b8a592b40209388938c11975425.pdf" class="btn btn-outline-dark" target="_blank" rel="noopener">Jugendsatzung (PDF)</a>
+        </div>
+      </div>
+      <img src="https://static.wixstatic.com/media/9eda5f_e1b80b72147444c6979feab96f5b314b~mv2.jpg/v1/fill/w_700,h_520,al_c,q_85/Jugend_MG_1512%20(1).jpg" alt="Jugendtraining SSV Untertürkheim" loading="lazy">
+    </div>
+  </section>
+
+  <!-- PREISE -->
+  <section class="ssv-section" id="preise" style="background:var(--cream-2);max-width:none;">
+    <div style="max-width:1120px;margin:0 auto;">
+      <div class="sec-head center fade-in">
+        <span class="eyebrow">Mitgliedschaft</span>
+        <h2>Jahresbeiträge &amp; Gästeangebote</h2>
+        <p>Gültig ab 01.01.2024. In allen Gästepreisen sind Standaufsicht, Standgeld, Leihwaffen, Scheiben, Munition und Versicherung enthalten.</p>
+      </div>
+
+      <div class="price-grid fade-in">
+        <div class="price-card hi">
+          <span class="tag">Standard</span>
+          <div class="lbl">Mitgliedsbeitrag / Jahr</div>
+          <div class="amt">120 <span>€</span></div>
+        </div>
+        <div class="price-card">
+          <div class="lbl">Schützenjugend, unter 21</div>
+          <div class="amt">30 <span>€</span></div>
+        </div>
+        <div class="price-card">
+          <div class="lbl">Azubis / Studenten bis 27</div>
+          <div class="amt">60 <span>€</span></div>
+        </div>
+        <div class="price-card">
+          <div class="lbl">Ehegatten / eingetr. Lebenspartner</div>
+          <div class="amt">60 <span>€</span></div>
+        </div>
+        <div class="price-card">
+          <div class="lbl">Rentner / Jahr</div>
+          <div class="amt">60 <span>€</span></div>
+        </div>
+        <div class="price-card">
+          <div class="lbl">Einmalige Aufnahmegebühr</div>
+          <div class="amt">120 <span>€</span></div>
+        </div>
+      </div>
+
+      <h3 class="fade-in" style="margin-bottom:16px;">Angebote für Gäste</h3>
+      <table class="guest-table fade-in">
+        <thead><tr><th>Angebot</th><th>Details</th><th>Preis</th></tr></thead>
+        <tbody>
+          <tr><td>Gäste Wettkampfprogramm</td><td>Luftgewehr, Luftpistole, KK-Gewehr, KK-Pistole</td><td>20 € p. P.</td></tr>
+          <tr><td>Gewehr Seminar</td><td>Einsteiger-Workshop Gewehr</td><td>20 € p. P.</td></tr>
+          <tr><td>Pistolen Seminar</td><td>Einsteiger-Workshop Pistole</td><td>20 € p. P.</td></tr>
+          <tr><td>Bogen Seminar</td><td>Einsteiger-Workshop Bogen</td><td>20 € p. P.</td></tr>
+          <tr><td>Kinderbogengeburtstag</td><td>Geburtstagsfeier mit Bogenschießen</td><td>8 € p. P.</td></tr>
+          <tr><td>GK Gewehr</td><td>Großkaliber-Gewehr-Schnuppern</td><td>25 € p. P.</td></tr>
+          <tr><td>GK Pistole</td><td>9mm &amp; .357, je 10 Schuss</td><td>30 € p. P.</td></tr>
+          <tr><td>GK Pistole 2</td><td>Pistole, Revolver &amp; K98-Mix</td><td>60 € p. P.</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:16px;font-size:13.5px;color:var(--muted);">Nahezu jedes Paket kann individuell geschnürt werden – fragt uns einfach an. Gesetzliche Altersvorgaben gelten auch bei geschlossenen Gästeveranstaltungen.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="ssv-section tight">
+    <div class="sec-head fade-in"><span class="eyebrow">Impressionen</span><h2>Unsere Anlage</h2></div>
+    <div class="gal-grid fade-in">
+      <img src="https://static.wixstatic.com/media/9eda5f_896f67c781da4f129700674edb44941e~mv2.jpg/v1/fill/w_360,h_300,al_c,q_85/9eda5f_896f67c781da4f129700674edb44941e~mv2.jpg" alt="10m Bahn" loading="lazy">
+      <img src="https://static.wixstatic.com/media/9eda5f_c6f70c53bea2419483b817c11ad228f3~mv2.jpg/v1/fill/w_360,h_300,al_c,q_85/9eda5f_c6f70c53bea2419483b817c11ad228f3~mv2.jpg" alt="25m Bahn" loading="lazy">
+      <img src="https://static.wixstatic.com/media/9eda5f_abea62354ed9480fb96266fcadc4b7ab~mv2.jpg/v1/fill/w_360,h_300,al_c,q_85/9eda5f_abea62354ed9480fb96266fcadc4b7ab~mv2.jpg" alt="50m Bahn" loading="lazy">
+      <img src="https://static.wixstatic.com/media/9eda5f_9b570fffd0084b63b6cfb4290cf80847~mv2.jpg/v1/fill/w_360,h_300,al_c,q_85/Umbau1956_2_m_JPG.jpg" alt="Historisches Vereinsheim" loading="lazy">
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="ssv-section" id="kontakt" style="background:var(--green-dark);max-width:none;color:#fff;">
+    <div style="max-width:1120px;margin:0 auto;">
+      <div class="sec-head fade-in">
+        <span class="eyebrow">Besuch &amp; Kontakt</span>
+        <h2 style="color:#fff;">Öffnungszeiten &amp; Anfahrt</h2>
+      </div>
+      <div class="contact-wrap fade-in">
+        <div class="contact-info" style="color:#e4e1d4;">
+          <table class="hours-table" style="color:#fff;">
+            <tr><td>Mittwoch</td><td>17:00 – 21:00 Uhr</td></tr>
+            <tr><td>Samstag</td><td>13:00 – 17:00 Uhr</td></tr>
+            <tr><td>Sonntag</td><td>09:00 – 12:00 Uhr</td></tr>
+            <tr><td>Bogen (Winter, Nov–Apr)</td><td>Samstag 15:00–17:00 Uhr</td></tr>
+          </table>
+          <div class="info-line"><span class="dot">●</span><span><b style="color:#fff;">Adresse:</b> Dietbachstraße 38, 70327 Stuttgart (Untertürkheim)</span></div>
+          <div class="info-line"><span class="dot">●</span><span><b style="color:#fff;">Telefon:</b> 0711 33 01 01</span></div>
+          <div class="info-line"><span class="dot">●</span><span><b style="color:#fff;">E-Mail:</b> ssv_untertuerkheim@web.de</span></div>
+          <p style="margin-top:20px;font-size:13.5px;color:#b9bdae;">Aus Stuttgart: B10 Richtung Esslingen, auf die B14 Richtung Backnang, Ausfahrt Mercedes-Werk Untertürkheim. Rechts auf die Benzstraße, an der Kreuzung mit Bahnunterführung links über die Gleise, dann der Augsburger Straße folgen und rechts in die Dietbachstraße. Das Schützenhaus liegt nach ca. 450m rechts, neben dem Küchenstudio Mayer &amp; Söhne. Parkplätze gegenüber.</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Dietbachstra%C3%9Fe+38%2C+70327+Stuttgart" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:18px;">Route planen</a>
+        </div>
+        <form class="contact-form" style="background:#fff;border-radius:8px;padding:26px;color:var(--ink);" onsubmit="event.preventDefault(); var n=this.name.value,e=this.email.value,t=this.tel.value,b=this.betreff.value,m=this.nachricht.value; var body=encodeURIComponent('Name: '+n+'\nTelefon: '+t+'\nBetreff: '+b+'\n\n'+m); window.location.href='mailto:ssv_untertuerkheim@web.de?subject='+encodeURIComponent('Anfrage über Website: '+b)+'&body='+body;">
+          <div class="form-field"><label>Name</label><input type="text" name="name" required></div>
+          <div class="form-field"><label>E-Mail-Adresse</label><input type="email" name="email" required></div>
+          <div class="form-field"><label>Telefonnummer</label><input type="tel" name="tel"></div>
+          <div class="form-field">
+            <label>Betreff</label>
+            <select name="betreff">
+              <option>Mitglied werden</option>
+              <option>Events</option>
+              <option>Jugend</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Nachricht</label><textarea name="nachricht" placeholder="Hinterlasst uns eine Nachricht"></textarea></div>
+          <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Absenden</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="ssv-section" id="faq">
+    <div class="sec-head center fade-in">
+      <span class="eyebrow">FAQ</span>
+      <h2>Häufig gestellte Fragen</h2>
+    </div>
+    <div class="fade-in" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">Wie werde ich Mitglied?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Der Einstieg erfolgt immer über einen Einsteiger-Lehrgang. In den folgenden Monaten lernen wir uns beim Training, am Stammtisch oder bei Veranstaltungen besser kennen. Danach kann ein Aufnahmeantrag gestellt werden, über den der Ausschuss abstimmt.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Wie läuft ein Probetraining ab?<span class="plus">+</span></button>
+        <div class="faq-a"><p>In Kleingruppen werden über ca. 90–120 Minuten die Grundlagen einer Disziplin (Bogen, Pistole oder Gewehr) vermittelt. Bei Kugeldisziplinen wird mit der Luftdruckwaffe begonnen, gegen Ende auch scharf mit Kleinkalibermunition geschossen. Workshops finden meist samstags statt – wir führen eine kleine Warteliste.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Ich will nur Großkaliber schießen – geht das?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Wir gehen den klassischen Ausbildungsweg über das Luftdruckschießen. Sobald die Schützenmeister die Freigabe erteilen, folgen Kleinkaliber- und erst dann Großkaliberdisziplinen. Unsere Empfehlung: Luftdruckschießen nie ganz aufgeben.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Was erwartet der Verein von mir als Mitglied?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Wir suchen Mitglieder, keine Kunden. Wir erwarten offenes Auftreten und Teilnahme am Vereinsleben – Wettkämpfe, gesellige Veranstaltungen, aber auch Wirtschaftsdienst, Standaufsicht und Arbeitsdienste.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Welche Kosten kommen auf mich zu?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Als Gast zahlst du zunächst die Gebühr für den Einsteiger-Workshop, danach das Standgeld für Gäste. Trainiert wird zunächst mit vereinseigenem Material. Details siehe Abschnitt „Preise“.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Wie bekomme ich eine eigene Sportwaffe?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Das dauert: Erst wer mindestens ein Jahr regelmäßig mit erlaubnispflichtigen Waffen trainiert hat, kann nach gesetzlicher Definition ein Bedürfnis als Sportschütze begründen.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section style="background:linear-gradient(135deg,var(--green),var(--green-dark));padding:56px 24px;text-align:center;color:#fff;">
+    <h2 style="color:#fff;margin-bottom:10px;">Lust, es selbst zu versuchen?</h2>
+    <p style="color:#d6d0bd;max-width:520px;margin:0 auto 24px;">Schreib uns eine Nachricht oder ruf einfach an – wir nehmen uns Zeit für jeden, der den Schießsport kennenlernen möchte.</p>
+    <a href="#kontakt" class="btn btn-gold">Jetzt Kontakt aufnehmen</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ssv-footer">
+    <div class="footer-grid">
+      <div>
+        <h5 style="font-size:18px;">SSV Untertürkheim</h5>
+        <p style="font-size:13.5px;color:#b9bdae;max-width:260px;">Sportschützenverein Stuttgart-Untertürkheim e.V. — Tradition, Präzision und Kameradschaft seit 1930.</p>
+      </div>
+      <div>
+        <h5>Verein</h5>
+        <ul>
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#sport">Schießsport</a></li>
+          <li><a href="#jugend">Jugend</a></li>
+          <li><a href="#preise">Preise</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Verbände</h5>
+        <ul>
+          <li><a href="https://www.wsv1850.de/" target="_blank" rel="noopener">Württ. Schützenverband 1850</a></li>
+          <li><a href="http://www.schuetzenkreis-stuttgart.de/" target="_blank" rel="noopener">Schützenkreis Stuttgart</a></li>
+          <li><a href="http://www.dsb.de/aktuelles/" target="_blank" rel="noopener">Deutscher Schützenbund</a></li>
+          <li><a href="https://www.wlsb.de/" target="_blank" rel="noopener">Württ. Landessportbund</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <ul>
+          <li>Dietbachstraße 38<br>70327 Stuttgart</li>
+          <li><a href="tel:071133 0101">0711 33 01 01</a></li>
+          <li><a href="mailto:ssv_untertuerkheim@web.de">ssv_untertuerkheim@web.de</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 SSV Untertürkheim e.V. · Impressum &amp; Datenschutz bitte gemäß TMG/DSGVO ergänzen
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var burger = document.getElementById('ssvBurger');
+  var links = document.getElementById('ssvLinks');
+  if(burger){
+    burger.addEventListener('click', function(){ links.classList.toggle('open'); });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ links.classList.remove('open'); });
+    });
+  }
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.fade-in').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
